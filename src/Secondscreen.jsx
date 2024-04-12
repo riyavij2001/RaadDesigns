@@ -118,13 +118,13 @@ const Secondscreen = () => {
 
   const pictures = [
     {
-      src: "src/Images/Pic3.jpg",
+      src: "../public/static/images/Pic3.jpg",
       scale: scale4,
       width: "30vw",
       height: "29vh"
     },
     {
-      src: "src/Images/Pic2.jpg",
+      src: "../public/static/images/Pic2.jpg",
       scale: scale5,
       top: "-33vh",
       left: "2.8vw",
@@ -132,7 +132,7 @@ const Secondscreen = () => {
       height: "30vh",
     },
     {
-      src: "src/Images/Pic1.jpg",
+      src: "../public/static/images/Pic1.jpg",
       scale: scale6,
       top: "-10vh",
       left: "-27vw",
@@ -140,14 +140,14 @@ const Secondscreen = () => {
       height: "48vh",
     },
     {
-      src: "src/Images/Pic4.jpg",
+      src: "../public/static/images/Pic4.jpg",
       scale: scale5,
       left: "27.5vw",
       width: "23vw",
       height: "28vh",
     },
     {
-      src: "src/Images/Pic5.jpg",
+      src: "../public/static/images/Pic5.jpg",
       scale: scale6,
       top: "32.6vh",
       left: "3.1vw",
@@ -155,7 +155,7 @@ const Secondscreen = () => {
       height: "32vh",
     },
     {
-      src: "src/Images/Pic6.jpg",
+      src: "../public/static/images/Pic6.jpg",
       scale: scale8,
       top: "33vh",
       left: "-24.5vw",
@@ -163,7 +163,7 @@ const Secondscreen = () => {
       height: "33vh",
     },
     {
-      src: "src/Images/Pic7.jpg",
+      src: "../public/static/images/Pic7.jpg",
       scale: scale9,
       top: "33vh",
       left: "25vw",

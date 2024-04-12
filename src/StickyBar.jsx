@@ -1,6 +1,6 @@
-import insta from './Images/insta.png'
-import fb from './Images/fb.png'
-import twitter from './Images/twitter.png'
+import insta from '../public/static/images/insta.png'
+import fb from '../public/static/images/fb.png'
+import twitter from '../public/static/images/twitter.png'
 
 function StickyBar(){
     return(

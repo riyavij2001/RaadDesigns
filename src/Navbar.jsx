@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import 'normalize.css';
-import lipstick_bg from './Images/lipstick_bg.jpg'
-import Logo from './Images/Logo.png'
+// import lipstick_bg from './Images/lipstick_bg.jpg'
+import Logo from '../public/static/images/Logo.png'
 import './App.css'
 
 function Navbar() {

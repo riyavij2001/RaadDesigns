@@ -1,6 +1,7 @@
 import Navbar from './Navbar'
 import FirstScreen from './Firstscreen'
 import Secondscreen from './Secondscreen'
+import ThirdScreen from './ThirdScreen'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <Navbar />
         <FirstScreen />
         <Secondscreen />
+        <ThirdScreen />
       </div>
   )
 }

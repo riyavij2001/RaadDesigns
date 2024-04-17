@@ -34,7 +34,7 @@ To explore RaaD Designs, simply visit our website [URL] and immerse yourself in 
 Contributions from fellow developers and enthusiasts are highly appreciated! If you're interested in collaborating or have suggestions for improving RaaD Designs, feel free to reach out to me [contact details].
 
 ## Feedback
-Your feedback is invaluable to us as we continue to refine and enhance the RaaD Designs experience. Please share your thoughts and suggestions via [feedback channel].
+Your feedback is invaluable to us as we continue to refine and enhance the RaaD Designs experience. 
 
 ## Credits
 RaaD Designs is the result of the collaborative efforts of our talented team. From conceptualization to execution, each member has played a crucial role in bringing this project to life.

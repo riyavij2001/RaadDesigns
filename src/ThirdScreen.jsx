@@ -125,14 +125,6 @@ function ThirdScreen() {
                         </div>
                     </div>
                 </div>
-
-                <div className=' flex md:flex md:flex-grow flex-row justify-end sticky right-0 text-[#E0CCBE] top-64 h-16 w-16'>
-                    <div className=' bg-[#3C2D1E] h-36 w-10 flex md:flex md:flex-col justify-center text-[#E0CCBE]'>
-                        <a className=' p-2 h-10 w-10' href=""> <img src={insta} alt="" /> </a>
-                        <a className=' p-2 h-10 w-10' href=""> <img src={fb} alt="" /> </a>
-                        <a className=' p-2 h-10 w-10' href=""> <img src={twitter} alt="" /> </a>
-                    </div>
-                </div>
             </div>
         </div>
     )

@@ -1,11 +1,12 @@
 import Navbar from './Navbar'
-import FirstScreen from './Firstscreen'
-import Secondscreen from './Secondscreen'
-import ThirdScreen from './ThirdScreen'
-import FourthScreen from './FourthScreen'
+import FirstScreen from './pages/home/Firstscreen'
+import Secondscreen from './pages/home/Secondscreen'
+import ThirdScreen from './pages/home/ThirdScreen'
+import FourthScreen from './pages/home/FourthScreen'
 
 function App() {
   return (
+    
     <div>
         <Navbar />
         <FirstScreen />

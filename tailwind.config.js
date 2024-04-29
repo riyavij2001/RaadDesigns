@@ -15,9 +15,10 @@ module.exports = {
       backgroundImage :{
         'bg':"url(/static/images/bg.jpg)",
       },
+      
     },
   },
-  plugins: [addVariablesForColors],
+  plugins: [addVariablesForColors, require("daisyui")],
 }
 
 

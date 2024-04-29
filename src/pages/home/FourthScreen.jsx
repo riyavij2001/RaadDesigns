@@ -8,8 +8,7 @@ import Collage3 from '/static/images/Collage3.jpeg'
 import Collage4 from '/static/images/Collage4.jpeg'
 import { Link } from 'react-router-dom';
 import React from "react";
-import { CardBody, CardContainer, CardItem } from "./components/ui/3D-card";
-import { LayoutGrid } from './components/ui/layout-grid'
+import { LayoutGrid } from '../../components/ui/layout-grid'
 
 const SkeletonOne = () => {
     return (

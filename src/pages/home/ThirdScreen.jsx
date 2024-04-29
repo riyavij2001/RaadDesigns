@@ -7,7 +7,7 @@ import Point3 from '/static/images/Point3.jpeg'
 import Point4 from '/static/images/Point4.jpeg'
 import { Link } from 'react-router-dom';
 import React from "react";
-import { CardBody, CardContainer, CardItem } from "./components/ui/3D-card";
+import { CardBody, CardContainer, CardItem } from "../../components/ui/3D-card";
 
 
 function ThirdScreen() {

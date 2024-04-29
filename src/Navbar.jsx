@@ -14,7 +14,7 @@ function Navbar() {
       <div className=' absolute min-h-[60vh] left-0 w-full items-center'>
         <div className=' p-5 space-x-6 flex md:flex md:flex-grow flex-row justify-end text-[#E0CCBE]'>
           <a href="">About Us</a>
-          <a href="">Shop</a>
+          <a href="/shop">Shop</a>
           <a href="">Vibe Check</a>
           <a href="">Contact Us</a>
         </div>

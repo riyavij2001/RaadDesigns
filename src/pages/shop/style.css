@@ -1,0 +1,20 @@
+.tabs {
+    display: none;
+}
+
+.tabsActive {
+    display: block;
+    background: #000;
+}
+
+.SelectedText {
+    padding-bottom: 6px;
+    border-bottom-style: solid;
+    border-bottom-width: 2.1px;
+    width: fit-content;
+    border-color: #E0CCBE;
+}
+
+.NormalText {
+    text-decoration: none;
+}

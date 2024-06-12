@@ -11,7 +11,7 @@ import curtains from "/static/images/curtains.png";
 
 function Aboutus() {
   return (
-    <div>
+    <div className=" !scroll-smooth">
       <div>
         <Navbar />
       </div>

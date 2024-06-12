@@ -82,22 +82,22 @@ const FirstScreen = () => {
                         </table>
                     </div>
                     <div>
-                        <div className={tab === 0 ? "tabsActive" : "tabs"}>
+                        <div className={tab === 0 ? "" : "tabs"}>
                             <HomeDecor />
                         </div>
-                        <div className={tab === 1 ? "tabsActive" : "tabs"}>
+                        <div className={tab === 1 ? "" : "tabs"}>
                             <LivingRoom />
                         </div>
-                        <div className={tab === 2 ? "tabsActive" : "tabs"}>
+                        <div className={tab === 2 ? "" : "tabs"}>
                             <HomeDecor />
                         </div>
-                        <div className={tab === 3 ? "tabsActive" : "tabs"}>
+                        <div className={tab === 3 ? "" : "tabs"}>
                             <LivingRoom />
                         </div>
-                        <div className={tab === 4 ? "tabsActive" : "tabs"}>
+                        <div className={tab === 4 ? "" : "tabs"}>
                             <HomeDecor />
                         </div>
-                        <div className={tab === 5 ? "tabsActive" : "tabs"}>
+                        <div className={tab === 5 ? "" : "tabs"}>
                             <LivingRoom />
                         </div>
                     </div>

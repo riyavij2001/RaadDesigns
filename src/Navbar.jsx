@@ -1,19 +1,21 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import 'normalize.css';
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "normalize.css";
 // import lipstick_bg from './Images/lipstick_bg.jpg'
-import Logo from '/static/images/Logo.png'
-import './App.css'
+import Logo from "/static/images/Logo.png";
+import "./App.css";
 
 function Navbar() {
   return (
-    <div className=' bg-[#262425] h-20 flex'>
-      <div className=' p-2 w-32'>
-        <a href="/home"><img src={Logo} alt="" className=' h-14 w-32' /></a>
-      </div>
-      <div className=' absolute min-h-[60vh] left-0 w-full items-center'>
-        <div className=' p-5 space-x-6 flex md:flex md:flex-grow flex-row justify-end text-[#E0CCBE]'>
-          <a href="/home">Home</a>
+    <div className=" bg-[#262425] h-20 flex">
+        <div className=" p-2 w-32 ml-10">
+          <a href="/">
+            <img src={Logo} alt="" className=" h-14 w-32" />
+          </a>
+          </div>
+      <div className=" absolute min-h-[60vh] left-0 w-full items-center ">
+        <div className=" p-5 space-x-6 flex md:flex md:flex-grow flex-row justify-end text-[#E0CCBE] mr-12">
+          <a href="/">Home</a>
           <a href="/aboutUs">About Us</a>
           <a href="/shop">Shop</a>
           <a href="/vibeCheck">Vibe Check</a>

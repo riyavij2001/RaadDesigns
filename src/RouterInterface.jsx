@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App'
 import Shop from './pages/shop/Shop'
 import Aboutus from './pages/aboutUs/Aboutus'
+import VibeCheck from './pages/vibeCheck/VibeCheck'
 
 
 const RouterInterface = () => {
@@ -29,9 +30,9 @@ const RouterInterface = () => {
                 }
             />
             <Route 
-                path='/home'
+                path='/VibeCheck'
                 element={
-                    <App />
+                    <VibeCheck />
                 }
             />
         </Routes>

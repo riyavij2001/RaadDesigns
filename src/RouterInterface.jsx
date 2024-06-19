@@ -4,6 +4,7 @@ import App from './App'
 import Shop from './pages/shop/Shop'
 import Aboutus from './pages/aboutUs/Aboutus'
 import VibeCheck from './pages/vibeCheck/VibeCheck'
+import ContactUs from './pages/contactUs/ContactUs'
 
 
 const RouterInterface = () => {
@@ -33,6 +34,12 @@ const RouterInterface = () => {
                 path='/VibeCheck'
                 element={
                     <VibeCheck />
+                }
+            />
+            <Route 
+                path='/ContactUs'
+                element={
+                    <ContactUs />
                 }
             />
         </Routes>

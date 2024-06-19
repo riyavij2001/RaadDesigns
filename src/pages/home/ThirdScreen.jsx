@@ -5,6 +5,7 @@ import Point1 from '/static/images/Point1.jpeg'
 import Point2 from '/static/images/Point2.jpeg'
 import Point3 from '/static/images/Point3.jpeg'
 import Point4 from '/static/images/Point4.jpeg'
+import Footer from '../../Footer'
 import { Link } from 'react-router-dom';
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../../components/ui/3D-card";
@@ -127,6 +128,7 @@ function ThirdScreen() {
                 </div>
             </div>
         </div>
+        
     )
 }
 

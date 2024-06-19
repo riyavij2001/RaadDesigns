@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './style.css'
 import HomeDecor from './TabContents/HomeDecor'
 import LivingRoom from './TabContents/LivingRoom'
+import Footer from '../../Footer'
 
 const FirstScreen = () => {
     const [tab, setTab] = useState(0)
@@ -103,6 +104,7 @@ const FirstScreen = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

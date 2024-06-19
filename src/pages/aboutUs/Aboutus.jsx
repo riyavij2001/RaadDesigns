@@ -8,6 +8,7 @@ import Collage4 from "/static/images/Collage4.jpeg";
 import sofa from "/static/images/sofa.png";
 import plant from "/static/images/plant.png";
 import curtains from "/static/images/curtains.png";
+import Footer from "../../Footer";
 
 function Aboutus() {
   return (
@@ -229,7 +230,9 @@ function Aboutus() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
+    
   );
 }
 

@@ -5,6 +5,7 @@ import Shop from './pages/shop/Shop'
 import Aboutus from './pages/aboutUs/Aboutus'
 import VibeCheck from './pages/vibeCheck/VibeCheck'
 import ContactUs from './pages/contactUs/ContactUs'
+import Login from './pages/login/Login'
 
 
 const RouterInterface = () => {
@@ -40,6 +41,12 @@ const RouterInterface = () => {
                 path='/ContactUs'
                 element={
                     <ContactUs />
+                }
+            />
+            <Route 
+                path='/Login'
+                element={
+                    <Login />
                 }
             />
         </Routes>

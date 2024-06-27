@@ -12,7 +12,7 @@ function Navbar() {
         <a href="/">
           <img src={Logo} alt="" className=" md:h-14 md:w-36 h-14 w-36 pl-8" />
         </a>
-        <div className=" flex-1 justify-end items-end">
+        <div className=" flex-0 justify-end items-end">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
               <svg
@@ -50,11 +50,14 @@ function Navbar() {
                 <li>
                   <a href="/contactUs">Contact Us</a>
                 </li>
+                <li>
+                  <a href="/Login">Login</a>
+                </li>
               </ul>
             </div>
           </div>
         </div>
-        <div className="navbar-end hidden md:flex md:text-[#E0CCBE] w-[70vw]">
+        <div className="navbar-end hidden md:flex-1 md:flex md:text-[#E0CCBE] w-[70vw]">
           <ul className="menu menu-horizontal">
             <li>
               <a href="/">Home</a>
@@ -70,6 +73,9 @@ function Navbar() {
             </li>
             <li>
               <a href="/contactUs">Contact Us</a>
+            </li>
+            <li>
+              <a href="/Login">Login</a>
             </li>
           </ul>
         </div>

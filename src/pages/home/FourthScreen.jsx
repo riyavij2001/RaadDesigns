@@ -89,15 +89,15 @@ const cards = [
 function FourthScreen() {
     return (
 
-        <div className=' bg-[#262425] bg-center bg-cover text-[#E0CCBE]'>
+        <div className=' bg-[#262425] md:bg-center bg-center bg-cover text-[#E0CCBE] md:mt-0 -mt-52'>
            
                 {/* <div className=' items-center text-center w-[100vw] mt-[15vh]'>
                     <h1 className='  text-3xl'>How RaaD Designs Works</h1>
                     <br />
                     <p className=' mb-8'>A Peek into RaaD's Innovative Approach to Interior Design, Where Every Pixel Tells a Story.</p>
                 </div> */}
-                <div className='  w-[100%]'>
-                    <div className=" h-screen w-full">
+                <div className='  md:w-[100%]'>
+                    <div className=" md:h-screen md:w-full h-screen w-full">
                         <LayoutGrid cards={cards} />
 
                     </div>

@@ -5,9 +5,9 @@ function Login() {
   return (
     <div className=" bg-[#262425] text-[#E0CCBE]">
       <Navbar />
-      <div className=" items-center flex flex-col justify-center m-6">
-        <h1 className=" font-semibold p-6">Login</h1>
-        <label className="bg-[#E0CCBE] m-6 text-[#262425] input input-bordered flex items-center gap-2">
+      <div className="items-center flex flex-col justify-center bg-[#E0CCBE] p-16 w-[50vw] m-auto mt-20">
+        <h2 className="  text-xl font-semibold p-6 text-[#262425]">Login <span className=" italic text-[#262425]">&</span> Step into Your Dream Space</h2>
+        <label className="bg-[#262425] m-6 text-[#E0CCBE] input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -17,7 +17,7 @@ function Login() {
             <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
             <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
           </svg>
-          <input type="text" className="grow text-[#262425]" placeholder="Email" />
+          <input type="text" className="grow text-[#E0CCBE]" placeholder="Email" />
         </label>
         {/* <label className="bg-[#E0CCBE] m-6 text-[#262425] input input-bordered flex items-center gap-2">
           <svg
@@ -30,7 +30,7 @@ function Login() {
           </svg>
           <input type="text" className="grow" placeholder="Username" />
         </label> */}
-        <label className="bg-[#E0CCBE] m-6 text-[#262425] input input-bordered flex items-center gap-2">
+        <label className="bg-[#262425] m-6 text-[#E0CCBE] input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -43,9 +43,9 @@ function Login() {
               clipRule="evenodd"
             />
           </svg>
-          <input type="password" className="grow" placeholder="Password" />
+          <input type="password" className="grow text-[#E0CCBE]" placeholder="Password" />
         </label>
-        <button className="btn bg-[#E0CCBE] text-[#262425]">Log In</button>
+        <button className="btn bg-[#262425] text-[#E0CCBE]">Log In</button>
       </div>
      
     </div>

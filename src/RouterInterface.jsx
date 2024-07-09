@@ -6,6 +6,7 @@ import Aboutus from './pages/aboutUs/Aboutus'
 import VibeCheck from './pages/vibeCheck/VibeCheck'
 import ContactUs from './pages/contactUs/ContactUs'
 import Login from './pages/login/Login'
+import SignUp from './pages/login/SignUp'
 
 
 const RouterInterface = () => {
@@ -47,6 +48,12 @@ const RouterInterface = () => {
                 path='/Login'
                 element={
                     <Login />
+                }
+            />
+            <Route 
+                path='/Signup'
+                element={
+                    <SignUp />
                 }
             />
         </Routes>

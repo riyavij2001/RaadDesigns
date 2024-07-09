@@ -51,7 +51,7 @@ function Navbar() {
                   <a href="/contactUs">Contact Us</a>
                 </li>
                 <li>
-                  <a href="/Login">Login</a>
+                  <a href="/login">Login</a>
                 </li>
               </ul>
             </div>
@@ -75,7 +75,7 @@ function Navbar() {
               <a href="/contactUs">Contact Us</a>
             </li>
             <li>
-              <a href="/Login">Login</a>
+              <a href="/login">Login</a>
             </li>
           </ul>
         </div>

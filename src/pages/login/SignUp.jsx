@@ -117,7 +117,7 @@ function SignUp() {
           
         </label>
         <button disabled={!email || !password || !confirmPassword || !name} style={{color:!email || !password || !confirmPassword || !name ? "#262425":"#E0CCBE"}} className="btn bg-[#262425] text-[#E0CCBE]" onClick={onSignupClicked}>Sign Up</button>
-        <a className=" text-[#262425] p-7" href="/Login">
+        <a className=" text-[#262425] p-7" href="/login">
           Already have an account? LogIn here
         </a>
       </div>

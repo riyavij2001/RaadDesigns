@@ -75,7 +75,7 @@ function Login() {
         <a className=" text-[#262425] p-7" href="/forgot-password">
           Forgot Password
         </a>
-        <a className=" text-[#262425]" href="/SignUp">
+        <a className=" text-[#262425]" href="/signUp">
           Dont have an account? Sign Up here
         </a>
       </div>

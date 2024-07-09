@@ -10,8 +10,6 @@ mongoose.connect("mongodb://localhost:27017/RaaDesigns", {
   useUnifiedTopology: true,
 });
 
-// const { signUpUser, loginUser } = require('./controllers/authController');
-
 // Define the User schema
 const UserSchema = new mongoose.Schema(
   {
@@ -123,24 +121,41 @@ app.post("/signUp", async (req, res) => {
   }
 });
 
+//Login
+
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const existingUser = await SignUpUser.findOne({ email });
+
+    if (!existingUser) {
+      return res.status(409).send("Email not registered");
+    }
+
+    const { _id: id, password: passwordHash, name } = existingUser;
+    const isCorrect = await bcrypt.compare(password, passwordHash);
+
+    if (isCorrect) {
+      jwt.sign(
+        { id, email, name },
+        process.env.JWT_SECRET,
+        { expiresIn: "2d" },
+        (err, token) => {
+          if (err) {
+            res.status(500).json(err);
+          }
+          res.status(200).json({ token });
+        }
+      );
+    } else {
+      res.sendStatus(401);
+    }
+  } catch (e) {
+    res.status(500).send("Something Went Wrong");
+  }
+});
+
 const PORT = process.env.PORT || 5000;
-
-//     let result = await user.save();
-//     result = result.toObject();
-//     if (result) {
-//         delete result.password;
-//         res.send(req.body);
-//         console.log(result);
-//     } else {
-//         console.log("User data already submitted");
-//     }
-// } catch (e) {
-//     res.send("Something Went Wrong");
-// }
-
-// Define the routes
-// router.post('/login', loginUser);
-// router.post('/signUp', signUpUser);
 
 app.use("/api/user", router);
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../Navbar";
+import axios from "axios";
 
 function SignUp() {
 
@@ -10,8 +11,21 @@ function SignUp() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const onSignupClicked = async () => {
-    alert('SignUp is not compelted yet')
+  const onSignupClicked = async (e) => {
+    e.preventDefault();
+    const userData = {
+      name: name,
+      email: email,
+      password: password
+    };
+    try {
+      const res = await axios.post('http://localhost:5000/signUp', userData);
+      console.log(res.data); // Handle success response
+      const { token } = res.data; 
+      localStorage.setItem('token', token);
+    } catch (err) {
+      console.error(err.response.data); // Handle error response
+    }
   }
 
   return (
@@ -38,7 +52,7 @@ function SignUp() {
             className="grow text-[#E0CCBE]"
             placeholder="Name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
           />
           
         </label>
@@ -57,7 +71,7 @@ function SignUp() {
             className="grow text-[#E0CCBE]"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
           
         </label>
@@ -90,7 +104,7 @@ function SignUp() {
             className="grow text-[#E0CCBE]"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
           />
           
         </label>
@@ -112,7 +126,7 @@ function SignUp() {
             className="grow text-[#E0CCBE]"
             placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={e => setConfirmPassword(e.target.value)}
           />
           
         </label>

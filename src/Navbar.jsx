@@ -1,11 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "normalize.css";
 // import lipstick_bg from './Images/lipstick_bg.jpg'
 import Logo from "/static/images/Logo.png";
 import "./App.css";
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const locattion = useLocation();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setLoggedIn(!!token);
+  }, [location]);
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+  };
+
   return (
     <div>
       <div className="navbar bg-[#262425]">
@@ -50,9 +64,15 @@ function Navbar() {
                 <li>
                   <a href="/contactUs">Contact Us</a>
                 </li>
-                <li>
-                  <a href="/login">Login</a>
-                </li>
+                {loggedIn ? (
+                  <li>
+                    <button onClick={handleLogOut}>Logout</button>
+                  </li>
+                ) : (
+                  <li>
+                    <a href="/login">Login</a>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -74,9 +94,15 @@ function Navbar() {
             <li>
               <a href="/contactUs">Contact Us</a>
             </li>
-            <li>
-              <a href="/login">Login</a>
-            </li>
+            {loggedIn ? (
+                  <li>
+                    <button onClick={handleLogOut}>Logout</button>
+                  </li>
+                ) : (
+                  <li>
+                    <a href="/login">Login</a>
+                  </li>
+                )}
           </ul>
         </div>
       </div>

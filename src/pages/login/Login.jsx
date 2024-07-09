@@ -1,15 +1,31 @@
 import React, { useState } from "react";
 import Navbar from "../../Navbar";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
 
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('')
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const onLoginClicked = async () => {
-    alert('Log In not compelted yet')
+  const onLoginClicked = async (e) => {
+    e.preventDefault();
+    const userData = {
+      email: email,
+      password: password
+    };
+    try {
+      const res = await axios.post('http://localhost:5000/login', userData);
+      console.log(res.data); // Handle success response
+      navigate('/home');
+      const { token } = res.data; 
+      localStorage.setItem('token', token);
+    } catch (err) {
+      console.error(err.response.data); // Handle error response
+    }
   }
 
   return (
@@ -34,9 +50,9 @@ function Login() {
           <input
             type="text"
             className="grow text-[#E0CCBE]"
-            placeholder="Name"
+            placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
         </label>
         {/* <label className="bg-[#E0CCBE] m-6 text-[#262425] input input-bordered flex items-center gap-2">
@@ -68,7 +84,7 @@ function Login() {
             className="grow text-[#E0CCBE]"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
           />
         </label>
         <button disabled={!email || !password} style={{color:!email || !password ? "#262425":"#E0CCBE"}} className="btn bg-[#262425] text-[#E0CCBE]" onClick={onLoginClicked}>Log In</button>

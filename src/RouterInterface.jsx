@@ -15,8 +15,9 @@ const RouterInterface = () => {
     <>
       <BrowserRouter>
         <Routes>
-        <Route path="/" element={<PrivateRoute Component={App} />} />
-          <Route path="/shop" element={<Shop />} />
+          <Route path="/" element={<App />} />
+          <Route path="/home" element={<App />} />
+          <Route path="/shop" element={<PrivateRoute Component={Shop} />} />
           <Route path="/aboutUs" element={<Aboutus />} />
           <Route path="/VibeCheck" element={<VibeCheck />} />
           <Route path="/ContactUs" element={<ContactUs />} />

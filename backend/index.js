@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 mongoose.connect("mongodb://localhost:27017/RaaDesigns", {
@@ -79,6 +81,8 @@ const UserSchema1 = new mongoose.Schema({
     type: String,
     required: true,
   },
+  otp: String,
+  otpExpires: Date,
 });
 
 const SignUpUser = mongoose.model("RaaDesignsSignUp", UserSchema1);
@@ -94,30 +98,59 @@ app.post("/signUp", async (req, res) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
+    const otp = crypto.randomBytes(3).toString('hex'); // Generate a 6-character OTP
+    const otpExpires = Date.now() + 3600000; // 1 hour
 
     const newUser = new SignUpUser({
       name,
       email,
       password: passwordHash,
+      otp,
+      otpExpires,
     });
 
     const result = await newUser.save();
 
-    const token = jwt.sign(
-      {
-        id: result._id,
-        email: result.email,
-        name: result.name,
-      },
+    // const token = jwt.sign(
+    //   {
+    //     id: result._id,
+    //     email: result.email,
+    //     name: result.name,
+    //   },
 
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "2d",
+    //   process.env.JWT_SECRET,
+    //   {
+    //     expiresIn: "2d",
+    //   }
+    // );
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'OTP Verification',
+      text: `Your OTP is: ${otp}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        return res.status(500).send('Error sending email');
       }
-    );
-    res.status(201).json({ token });
+      console.log('Email sent: ' + info.response);
+      res.status(201).send('Signup successful! Please verify your email.');
+    });
+
+    // res.status(201).json({ token });
   } catch (e) {
-    res.status(500).send("Something Went Wrong");
+    res.status(500).send("Something Went Wrong!");
   }
 });
 
@@ -154,6 +187,34 @@ app.post("/login", async (req, res) => {
     res.status(500).send("Something Went Wrong");
   }
 });
+
+
+app.post('/verify-otp', async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+    const user = await SignUpUser.findOne({
+      email,
+      otp,
+      otpExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).send('Invalid or expired OTP');
+    }
+
+    user.isVerified = true;
+    user.otp = undefined;
+    user.otpExpires = undefined;
+
+    await user.save();
+
+    res.send('Email verified successfully');
+  } catch (error) {
+    res.status(500).send('Something Went Wrong');
+  }
+});
+
 
 const PORT = process.env.PORT || 5000;
 

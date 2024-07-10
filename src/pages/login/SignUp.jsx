@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "../../Navbar";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom'
 
 function SignUp() {
 
   const [errorMessage, setErrorMessage] = useState('')
+  const navigate = useNavigate();
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -23,7 +25,9 @@ function SignUp() {
       console.log(res.data); // Handle success response
       const { token } = res.data; 
       localStorage.setItem('token', token);
+      navigate('/verifyOTP', { state: { email }});
     } catch (err) {
+      alert('Signup successful! Please check your email for the OTP.')
       console.error(err.response.data); // Handle error response
     }
   }

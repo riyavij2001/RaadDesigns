@@ -9,6 +9,7 @@ import Login from "./pages/login/Login";
 import SignUp from "./pages/login/SignUp";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import NewPage from "./pages/NewPage";
+import VerifyOTP from "./pages/login/VerifyOTP";
 
 const RouterInterface = () => {
   return (
@@ -24,6 +25,7 @@ const RouterInterface = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/new" element={<PrivateRoute Component={NewPage} />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/verifyOTP" element={<PrivateRoute Component={VerifyOTP} />} />
         </Routes>
       </BrowserRouter>
     </>

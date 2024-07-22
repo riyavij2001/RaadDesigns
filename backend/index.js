@@ -98,7 +98,7 @@ app.post("/signUp", async (req, res) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
-    const otp = crypto.randomBytes(3).toString('hex'); // Generate a 6-character OTP
+    const otp = crypto.randomInt(100000, 999999).toString();
     const otpExpires = Date.now() + 3600000; // 1 hour
 
     const newUser = new SignUpUser({
@@ -132,11 +132,30 @@ app.post("/signUp", async (req, res) => {
       },
     });
 
+    const html = `
+  <div style="font-family: Arial, sans-serif; color: #262425; background-color: #E0CCBE; padding: 20px; border-radius: 10px;">
+    <h1 style="color: #262425; text-align: center;">Welcome to RaaD Designs!</h1>
+    <p style="font-size: 16px;">We're excited to have you on board. To complete your registration, please verify your email address using the OTP below:</p>
+    <div style="text-align: center; margin: 20px 0;">
+      <h2 style="color: #262425; background-color: #E0CCBE; display: inline-block; padding: 10px 20px; border-radius: 5px;">${otp}</h2>
+    </div>
+    <p style="font-size: 16px;">This OTP will expire in 10 minutes, so use it soon to unlock a world of stylish possibilities.</p>
+    <p style="font-size: 16px;">If you didn't request this, please ignore this email.</p>
+    <p style="font-size: 16px;">Cheers,</p>
+    <p style="font-size: 16px;"><strong>The RaaD Designs Team</strong></p>
+  </div>
+`;
+
+  
+    // Send the OTP to the user's email
+    // await sendEmail(email, otp, html);
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
       subject: 'OTP Verification',
-      text: `Your OTP is: ${otp}`,
+      // text: `Your OTP is: ${otp}`,
+      html
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

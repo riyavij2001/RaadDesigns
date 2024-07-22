@@ -25,7 +25,7 @@ const RouterInterface = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/new" element={<PrivateRoute Component={NewPage} />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/verifyOTP" element={<PrivateRoute Component={VerifyOTP} />} />
+          <Route path="/verifyOTP" element={ <VerifyOTP />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -28,9 +28,9 @@ function ContactUs() {
   };
 
   return (
-    <div className=" bg-[#262425]">
+    <div className=" bg-[#262425] w-full">
       <Navbar />
-      <div class="w-full p-[10vh]">
+      <div class=" ">
         <div>
           <div className=" text-[#E0CCBE] items-center justify-center text-center">
             <h1 className=" text-4xl">
@@ -40,7 +40,7 @@ function ContactUs() {
           <div className=" pt-16">
             <div className="flex h-[70vh] w-full">
               <div className="grid h-10 card rounded-box place-items-center">
-                <img className=" h-[70vh] w-[40vw]" src={Pic1} alt="" />
+                <img className=" h-[70vh] w-[40vw] p-10" src={Pic1} alt="" />
               </div>
               <div className="divider divider-horizontal"></div>
               <div className="grid h-20 w-[40vw] card rounded-box place-items-center">

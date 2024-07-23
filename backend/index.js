@@ -125,10 +125,10 @@ app.post("/signUp", async (req, res) => {
     // );
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        pass: process.env.EMAIL_PASS,
       },
     });
 
@@ -146,25 +146,24 @@ app.post("/signUp", async (req, res) => {
   </div>
 `;
 
-  
     // Send the OTP to the user's email
     // await sendEmail(email, otp, html);
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: 'OTP Verification',
+      subject: "OTP Verification",
       // text: `Your OTP is: ${otp}`,
-      html
+      html,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(error);
-        return res.status(500).send('Error sending email');
+        return res.status(500).send("Error sending email");
       }
-      console.log('Email sent: ' + info.response);
-      res.status(201).send('Signup successful! Please verify your email.');
+      console.log("Email sent: " + info.response);
+      res.status(201).send("Signup successful! Please verify your email.");
     });
 
     // res.status(201).json({ token });
@@ -207,8 +206,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
-app.post('/verify-otp', async (req, res) => {
+app.post("/verify-otp", async (req, res) => {
   const { email, otp } = req.body;
 
   try {
@@ -219,7 +217,7 @@ app.post('/verify-otp', async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).send('Invalid or expired OTP');
+      return res.status(400).send("Invalid or expired OTP");
     }
 
     user.isVerified = true;
@@ -228,9 +226,105 @@ app.post('/verify-otp', async (req, res) => {
 
     await user.save();
 
-    res.send('Email verified successfully');
+    res.send("Email verified successfully");
   } catch (error) {
-    res.status(500).send('Something Went Wrong');
+    res.status(500).send("Something Went Wrong");
+  }
+});
+
+app.post("/forgotPassword", async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await SignUpUser.findOne({
+      email,
+    });
+
+    if (!user) {
+      return res.status(400).send("User with this email does not exists");
+    }
+
+    user.isVerified = true;
+
+
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const resetTokenExpires = Date.now() + 60 * 60 * 1000;
+
+    user.resetPasswordToken = resetToken;
+    user.resetPasswordExpires = resetTokenExpires;
+
+    await user.save();
+
+    const resetLink = `http://localhost:5173/resetPassword?token=${resetToken}`;
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const html = `
+    <div style="font-family: Arial, sans-serif; color: #262425; background-color: #E0CCBE; padding: 20px; border-radius: 10px;">
+      <h1 style="color: #262425; text-align: center;">Reset Your Password</h1>
+      <p style="font-size: 16px;">It happens to the best of us! To reset your password, please click the link below:</p>
+      <div style="text-align: center; margin: 20px 0;">
+        <a href="${resetLink}" style="color: #fff; background-color: #262425; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Reset Password</a>
+      </div>
+      <p style="font-size: 16px;">If you didn’t request a password reset, you can safely ignore this email.</p>
+      <p style="font-size: 16px;">Cheers,</p>
+      <p style="font-size: 16px;"><strong>The RaaD Designs Team</strong></p>
+    </div>
+  `;
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "RaaD Designs Password Reset Request",
+      html,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Error sending email");
+      }
+      console.log("Email sent: " + info.response);
+      res.status(201).send("Password reset mail sent successful! Please reset your password");
+    });
+
+    res.send("Verification link sent successfully");
+  } catch (error) {
+    res.status(500).send("Something Went Wrong");
+  }
+});
+
+app.post("/resetPassword", async (req, res) => {
+  const { token, newPassword } = req.body;
+
+  try {
+    const user = await SignUpUser.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).send("Invalid or expired OTP");
+    }
+
+
+    user.password = newPassword;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+
+    const newPassword = await bcrypt.hash(newPassword, 10);
+
+
+    await user.save();
+
+    res.send("Password reset successfully");
+  } catch (error) {
+    res.status(500).send("Something Went Wrong");
   }
 });
 

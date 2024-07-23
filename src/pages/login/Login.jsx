@@ -88,7 +88,7 @@ function Login() {
           />
         </label>
         <button disabled={!email || !password} style={{color:!email || !password ? "#262425":"#E0CCBE"}} className="btn bg-[#262425] text-[#E0CCBE]" onClick={onLoginClicked}>Log In</button>
-        <a className=" text-[#262425] p-7" href="/forgot-password">
+        <a className=" text-[#262425] p-7" href="/forgotPassword">
           Forgot Password
         </a>
         <a className=" text-[#262425]" href="/signUp">

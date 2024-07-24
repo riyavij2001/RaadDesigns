@@ -8,11 +8,11 @@ import "./App.css";
 function Footer() {
   return (
     <div>
-      <footer className="footer footer-center md:p-10 p-4 bg-[#262425] text-[#E0CCBE]">
+      <footer className="footer footer-center lg:p-10 p-4 bg-[#262425] text-[#E0CCBE]">
         <aside>
           <img
             src={Logo}
-            className=" md:w-[10vw] md:h-[9vh] w-[34vw] h-[8vh] inline-block fill-current"
+            className=" md:w-[7vw] sm:w-[18vw] lg:w-[10vw] lg:h-[9vh] w-[34vw] h-[8vh] inline-block fill-current"
             alt=""
           />
           <p className="font-bold">
@@ -29,7 +29,7 @@ function Footer() {
     <a className="link link-hover  w-[69px]" href="/contactUs">Contact Us</a>
   </nav> 
         <nav>
-          <div className="grid grid-flow-col gap-4 mb-6 -mt-4 md:-mt-0">
+          <div className="grid grid-flow-col gap-4 mb-6 -mt-4 lg:-mt-0">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

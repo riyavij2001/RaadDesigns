@@ -7,7 +7,7 @@ function FirstScreen() {
   return (
     <div className=" bg-bg bg-center bg-no-repeat h-[80vh] md:h-screen bg-cover">
       <div className=" flex">
-        <div className=" bg-black bg-opacity-70 m-[35px] mt-44 pt-12 p-10 md:m-36 md:p-14 text-[#E0CCBE] md:h-64 md:w-1/3 items-center flex flex-col justify-center text-center">
+        <div className=" bg-black bg-opacity-70 m-[35px] lg:p-[30px] mt-44 pt-12 p-10 md:m-36 md:p-14 text-[#E0CCBE] md:h-64 md:w-1/3 items-center flex flex-col justify-center text-center">
           <h1 className=" md:mb-3 md:text-3xl">Let your home be unique</h1>
           <p className=" mb-8">
             A room should never allow the eye to settle in one place. It should

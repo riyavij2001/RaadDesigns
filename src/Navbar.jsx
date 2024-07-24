@@ -24,11 +24,11 @@ function Navbar() {
     <div>
       <div className="navbar bg-[#262425]">
         <a href="/">
-          <img src={Logo} alt="" className=" md:h-14 md:w-36 h-14 w-36 pl-8" />
+          <img src={Logo} alt="" className=" lg:h-14 lg:w-36 h-14 w-36 pl-8" />
         </a>
         <div className=" flex-1 justify-end items-end">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 scale-x-[-1]"
@@ -47,7 +47,7 @@ function Navbar() {
             <div className=" pr-20">
               <ul
                 tabIndex={0}
-                className="menu menu-md dropdown-content bg-[#E0CCBE] text-[#262425] rounded-box z-[1] mt-3 w-32 p-2 shadow"
+                className="menu menu-lg dropdown-content bg-[#E0CCBE] text-[#262425] rounded-box z-[1] mt-3 w-32 p-2 shadow"
               >
                 <li>
                   <a href="/">Home</a>
@@ -77,7 +77,7 @@ function Navbar() {
             </div>
           </div>
         </div>
-        <div className="navbar-end hidden md:flex-1 md:flex md:text-[#E0CCBE] w-[32vw]">
+        <div className="navbar-end hidden lg:flex-1 lg:flex lg:text-[#E0CCBE] w-[32vw]">
           <ul className="menu menu-horizontal">
             <li>
               <a href="/">Home</a>
@@ -114,7 +114,7 @@ function Navbar() {
         </div>
 
         <div className="min-h-[60vh] left-0 items-center ">
-          <div className=" p-5 space-x-6 flex md:flex md:flex-grow flex-row justify-end text-[#E0CCBE] mr-12 sm:text-black md:text-white">
+          <div className=" p-5 space-x-6 flex lg:flex lg:flex-grow flex-row justify-end text-[#E0CCBE] mr-12 sm:text-black lg:text-white">
             <a href="/">Home</a>
             <a href="/aboutUs">About Us</a>
             <a href="/shop">Shop</a>

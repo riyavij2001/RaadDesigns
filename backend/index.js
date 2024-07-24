@@ -231,6 +231,7 @@ app.post("/verify-otp", async (req, res) => {
     res.status(500).send("Something Went Wrong");
   }
 });
+const resetTokens = {};
 
 app.post("/forgotPassword", async (req, res) => {
   const { email } = req.body;
@@ -245,17 +246,22 @@ app.post("/forgotPassword", async (req, res) => {
 
     user.isVerified = true;
 
-
-    const resetToken = crypto.randomBytes(32).toString('hex');
+    const resetToken = crypto.randomBytes(32).toString("hex");
     const resetTokenExpires = Date.now() + 60 * 60 * 1000;
 
-    user.resetPasswordToken = resetToken;
-    user.resetPasswordExpires = resetTokenExpires;
+    resetTokens[resetToken] = {
+      token : resetToken,
+      email,
+      expires: resetTokenExpires,
+    };
 
-    await user.save();
+    console.log("Generated reset token:", resetToken); // Debugging line
+    console.log("Reset tokens store:", resetTokens); // Debugging line
+    // console.log("Res",resetTokens[token]);
+
 
     const resetLink = `http://localhost:5173/resetPassword?token=${resetToken}`;
-
+    
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -290,8 +296,13 @@ app.post("/forgotPassword", async (req, res) => {
         return res.status(500).send("Error sending email");
       }
       console.log("Email sent: " + info.response);
-      res.status(201).send("Password reset mail sent successful! Please reset your password");
+      res
+        .status(201)
+        .send(
+          "Password reset mail sent successful! Please reset your password"
+        );
     });
+
 
     res.send("Verification link sent successfully");
   } catch (error) {
@@ -300,31 +311,53 @@ app.post("/forgotPassword", async (req, res) => {
 });
 
 app.post("/resetPassword", async (req, res) => {
-  const { token, newPassword } = req.body;
+  // Log the entire request body to check its structure
+  console.log("Request body received:", req.body);
+
+  const { token, password } = req.body;
+
+  // Log the extracted token and newPassword
+  console.log("Extracted token:", token);
+  console.log("Extracted newPassword:", password);
 
   try {
-    const user = await SignUpUser.findOne({
-      resetPasswordToken: token,
-      resetPasswordExpires: { $gt: Date.now() },
-    });
+    // Validate token
+    const tokenData = resetTokens[token];
+    
+    console.log("Token received:", token); // Debugging line
+    console.log("Token data:", tokenData); // Debugging line
 
-    if (!user) {
-      return res.status(400).send("Invalid or expired OTP");
+    if (!tokenData) {
+      return res.status(400).send("Invalid or expired token: Token not found");
     }
 
+    if (tokenData.expires < Date.now()) {
+      delete resetTokens[token]; // Clean up expired token
+      return res.status(400).send("Invalid or expired token: Token has expired");
+    }
 
-    user.password = newPassword;
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpires = undefined;
+    // Find user by email
+    const user = await SignUpUser.findOne({ email: tokenData.email });
+    
+    if (!user) {
+      return res.status(400).send("User not found");
+    }
 
-    const newPassword = await bcrypt.hash(newPassword, 10);
+    // Hash the new password before saving it
+    const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Update user password
+    user.password = hashedPassword;
 
     await user.save();
 
+    // Clean up the token
+    delete resetTokens[token];
+
     res.send("Password reset successfully");
   } catch (error) {
-    res.status(500).send("Something Went Wrong");
+    console.error("Error resetting password:", error);
+    res.status(500).send("Something went wrong");
   }
 });
 

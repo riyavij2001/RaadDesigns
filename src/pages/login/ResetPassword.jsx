@@ -13,6 +13,7 @@ const ResetPassword = () => {
   const [confirmPassword, setconfirmPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  
   useEffect(() => {
     if (location.state && location.state.password) {
       setPassword(location.state.password);
@@ -21,17 +22,22 @@ const ResetPassword = () => {
 
   const onResetPasswordClicked = async (e) => {
     e.preventDefault();
-    const userData = { password };
     if (confirmPassword != password) {
       alert("Password and confirm password does not match.");
     } else {
+      const queryParams = new URLSearchParams(location.search);
+      const token = queryParams.get("token");
+      const userData = { token, password };
+      console.log(token);
+      console.log(userData);
       try {
         const res = await axios.post(
-          `http://localhost:5000/resetPassword?token=${resetToken}`,
+          `http://localhost:5000/resetPassword?token=${token}`,
           userData
         );
+        console.log(token)
         setMessage(res.data);
-        navigate("/home");
+        navigate("/login");
       } catch (err) {
         console.error(err.response.data);
         setMessage("Error verifying OTP");
@@ -64,7 +70,7 @@ const ResetPassword = () => {
             <input
               type="password"
               className="grow text-[#E0CCBE] bg-[#262425]"
-              placeholder="Enter your Password"
+              placeholder="Enter your new Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -83,9 +89,9 @@ const ResetPassword = () => {
             </svg>
 
             <input
-              type="text"
+              type="password"
               className="grow text-[#E0CCBE] bg-[#262425]"
-              placeholder="Confirm your password"
+              placeholder="Confirm your new password"
               value={confirmPassword}
               onChange={(e) => setconfirmPassword(e.target.value)}
             />

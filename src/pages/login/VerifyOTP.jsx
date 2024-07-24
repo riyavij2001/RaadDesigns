@@ -25,6 +25,8 @@ const VerifyOTP = () => {
     try {
       const res = await axios.post("http://localhost:5000/verify-otp", otpData);
       setMessage(res.data);
+      const { token } = res.data;
+      localStorage.setItem("token", token);
       navigate("/home");
     } catch (err) {
       console.error(err.response.data);

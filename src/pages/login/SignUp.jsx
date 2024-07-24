@@ -26,8 +26,8 @@ function SignUp() {
     try {
       const res = await axios.post("http://localhost:5000/signUp", userData);
       console.log(res.data); // Handle success response
-      const { token } = res.data;
-      localStorage.setItem("token", token);
+      // const { token } = res.data;
+      // localStorage.setItem("token", token);
       
       // Simulate a delay for the loader
       setTimeout(() => {

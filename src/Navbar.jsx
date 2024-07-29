@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 
 function Navbar() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const locattion = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -44,33 +44,33 @@ function Navbar() {
                 />
               </svg>
             </div>
-            <div className=" pr-20">
+            <div className=" ">
               <ul
-                tabIndex={0}
-                className="menu menu-lg dropdown-content bg-[#E0CCBE] text-[#262425] rounded-box z-[1] mt-3 w-32 p-2 shadow"
+                tabIndex={1}
+                className="menu dropdown-content bg-[#E0CCBE] text-[#262425] rounded-box w-26 shadow h-84"
               >
                 <li>
-                  <a href="/">Home</a>
+                  <a className=" text-sm" href="/">Home</a>
                 </li>
                 <li>
-                  <a href="/aboutUs">About Us</a>
+                  <a className=" text-sm" href="/aboutUs">About Us</a>
                 </li>
                 <li>
-                  <a href="/shop">Shop</a>
+                  <a className=" text-sm" href="/shop">Shop</a>
                 </li>
                 <li>
-                  <a href="/vibeCheck">Vibe Check</a>
+                  <a className=" text-sm" href="/vibeCheck">Vibe Check</a>
                 </li>
                 <li>
-                  <a href="/contactUs">Contact Us</a>
+                  <a className=" text-sm" href="/contactUs">Contact Us</a>
                 </li>
                 {loggedIn ? (
                   <li>
-                    <button onClick={handleLogOut}>Logout</button>
+                    <button className=" text-sm" onClick={handleLogOut}>Logout</button>
                   </li>
                 ) : (
                   <li>
-                    <a href="/login">Login</a>
+                    <a className=" text-sm" href="/login">Login</a>
                   </li>
                 )}
               </ul>

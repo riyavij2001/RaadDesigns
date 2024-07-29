@@ -21,13 +21,23 @@ function Footer() {
           </p>
           <p>Copyright © 2024 - All right reserved</p>
         </aside>
-        <nav className="grid grid-flow-col gap-4">
-    <a className="link link-hover" href="/">Home</a>
-    <a className="link link-hover  w-[58px]" href="/aboutUs">About Us</a>
-    <a className="link link-hover" href="/shop">Shop</a>
-    <a className="link link-hover  w-[69px]" href="/vibeCheck">Vibe Check</a>
-    <a className="link link-hover  w-[69px]" href="/contactUs">Contact Us</a>
-  </nav> 
+        <nav className="grid grid-flow-col gap-2">
+          <a className="link link-hover" href="/">
+            Home
+          </a>
+          <a className="link link-hover  w-[58px]" href="/aboutUs">
+            About Us
+          </a>
+          <a className="link link-hover" href="/shop">
+            Shop
+          </a>
+          <a className="link link-hover  w-[69px]" href="/vibeCheck">
+            Vibe Check
+          </a>
+          <a className="link link-hover  w-[69px]" href="/contactUs">
+            Contact Us
+          </a>
+        </nav>
         <nav>
           <div className="grid grid-flow-col gap-4 mb-6 -mt-4 lg:-mt-0">
             <a>

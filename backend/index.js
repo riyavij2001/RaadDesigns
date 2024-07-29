@@ -255,8 +255,8 @@ app.post("/forgotPassword", async (req, res) => {
       expires: resetTokenExpires,
     };
 
-    console.log("Generated reset token:", resetToken); // Debugging line
-    console.log("Reset tokens store:", resetTokens); // Debugging line
+    // console.log("Generated reset token:", resetToken); // Debugging line
+    // console.log("Reset tokens store:", resetTokens); // Debugging line
     // console.log("Res",resetTokens[token]);
 
 
@@ -312,20 +312,20 @@ app.post("/forgotPassword", async (req, res) => {
 
 app.post("/resetPassword", async (req, res) => {
   // Log the entire request body to check its structure
-  console.log("Request body received:", req.body);
+  // console.log("Request body received:", req.body);
 
   const { token, password } = req.body;
 
   // Log the extracted token and newPassword
-  console.log("Extracted token:", token);
-  console.log("Extracted newPassword:", password);
+  // console.log("Extracted token:", token);
+  // console.log("Extracted newPassword:", password);
 
   try {
     // Validate token
     const tokenData = resetTokens[token];
     
-    console.log("Token received:", token); // Debugging line
-    console.log("Token data:", tokenData); // Debugging line
+    // console.log("Token received:", token); // Debugging line
+    // console.log("Token data:", tokenData); // Debugging line
 
     if (!tokenData) {
       return res.status(400).send("Invalid or expired token: Token not found");

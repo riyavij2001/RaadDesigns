@@ -15,30 +15,34 @@ function SignUp() {
 
   const onSignupClicked = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Show loader immediately
+    if (confirmPassword != password) {
+      alert("Password and confirm password does not match.");
+    } else {
+      setIsLoading(true); // Show loader immediately
 
-    const userData = {
-      name: name,
-      email: email,
-      password: password,
-    };
+      const userData = {
+        name: name,
+        email: email,
+        password: password,
+      };
 
-    try {
-      const res = await axios.post("http://localhost:5000/signUp", userData);
-      console.log(res.data); // Handle success response
-      // const { token } = res.data;
-      // localStorage.setItem("token", token);
-      
-      // Simulate a delay for the loader
-      setTimeout(() => {
+      try {
+        const res = await axios.post("http://localhost:5000/signUp", userData);
+        console.log(res.data); // Handle success response
+        // const { token } = res.data;
+        // localStorage.setItem("token", token);
+
+        // Simulate a delay for the loader
+        setTimeout(() => {
+          setIsLoading(false);
+          alert("Signup successful! Please check your email for the OTP.");
+          navigate("/verifyOTP", { state: { email } });
+        }, 2000); // Show loader for 3 seconds
+      } catch (err) {
         setIsLoading(false);
-        alert("Signup successful! Please check your email for the OTP.");
-        navigate("/verifyOTP", { state: { email } });
-      }, 2000); // Show loader for 3 seconds
-    } catch (err) {
-      setIsLoading(false);
-      alert("User with this email already exists");
-      console.error(err.response.data); // Handle error response
+        alert("User with this email already exists");
+        console.error(err.response.data); // Handle error response
+      }
     }
   };
 
